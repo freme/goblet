@@ -23,6 +23,14 @@ Goblet is intended to be used as a library. You would need to write some glue
 code. This repository includes the glue code for googlesource.com. See
 `goblet-server` and `google` directories.
 
+If you want to build the `goblet-server` as a docker image, make sure to use 
+the correct platform as the docker container is meant to run on linux:
+
+```sh
+bazel build --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64 goblet-server:image
+bazel run --platforms=@io_bazel_rules_go//go/toolchain:linux_amd64 goblet-server:image
+```
+
 ## Limitations
 
 Note that Goblet forwards the ls-refs traffic to the upstream server. If the
